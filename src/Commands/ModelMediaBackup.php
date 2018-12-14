@@ -2,7 +2,7 @@
 
 namespace BinBytes\ModelMediaBackup\Commands;
 
-use BinBytes\ModelMediaBackup\Mail\MediaBackupTaken;
+use BinBytes\ModelMediaBackup\Events\MediaBackupSuccessful;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
@@ -89,26 +89,8 @@ class ModelMediaBackup extends Command
      */
     protected function sendNotifications(array $recordsBackup)
     {
-        if(!config('modelmediabackup.EnableNotification')) {
-            return;
-        }
-
-        if($mailTo = config('modelmediabackup.Notification.MailTo')) {
-            $this->sendNotificationMail($mailTo, $recordsBackup);
-        }
-    }
-
-    /**
-     * Send notification mail
-     *
-     * @param string $mailTo
-     * @param array $recordsBackup
-     */
-    protected function sendNotificationMail($mailTo, array $recordsBackup)
-    {
-        \Mail::to($mailTo)
-            ->send(new MediaBackupTaken(
-                $recordsBackup
-            ));
+        event(
+            new MediaBackupSuccessful($recordsBackup)
+        );
     }
 }
