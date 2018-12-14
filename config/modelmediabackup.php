@@ -19,11 +19,6 @@ return [
     'ChunkSize' => 100,
 
     /*
-     * Turn it to true if you want notification after backup is proccessed
-     */
-    'EnableNotification' => false,
-
-    /*
      * Notification configuration
      */
     'Notification' => [
