@@ -28,7 +28,7 @@ class EventHandler
      */
     public function subscribe(Dispatcher $events)
     {
-        $events->listen($this->allBackupEventClasses(), function ($event) {
+        $events->listen($this->allEventClasses(), function ($event) {
             $notifiable = $this->determineNotifiable();
 
             $notification = $this->determineNotification($event);
