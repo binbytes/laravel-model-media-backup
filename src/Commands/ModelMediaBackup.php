@@ -2,7 +2,6 @@
 
 namespace BinBytes\ModelMediaBackup\Commands;
 
-use BinBytes\ModelMediaBackup\Interfaces\ShouldBackupFiles;
 use BinBytes\ModelMediaBackup\Mail\MediaBackupTaken;
 use Illuminate\Console\Command;
 
@@ -49,7 +48,7 @@ class ModelMediaBackup extends Command
         $chunkSize = config('modelmediabackup.ChunkSize');
 
         foreach ($models = config('modelmediabackup.Models') as $model) {
-            if(in_array(ShouldBackupFiles::class, class_implements($model)) === false) {
+            if(method_exists($model, 'backupFiles') === false) {
                 continue;
             }
 
