@@ -33,8 +33,15 @@ return [
          */
         'MailTo' => null,
 
+        /*
+         * Here you can specify the notifiable to which the notifications should be sent. The default
+         *
+         * notifiable will use the variables specified in this config file.
+         */
+        'notifiable' => \BinBytes\ModelMediaBackup\Notifications\Notifiable::class,
+
         'Notifications' => [
-            \BinBytes\ModelMediaBackup\Notifications\Notifications\MediaBackupSuccessful::class
+            \BinBytes\ModelMediaBackup\Notifications\Notifications\MediaBackupSuccessful::class,
         ]
     ]
 ];

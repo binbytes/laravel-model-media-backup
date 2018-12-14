@@ -10,7 +10,7 @@ class MediaBackupSuccessful
     /**
      * @var array
      */
-    private $recordsBackup;
+    public $recordsBackup;
 
     /**
      * MediaBackupSuccessful constructor.
