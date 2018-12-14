@@ -1,0 +1,43 @@
+{
+    "name": "binbytes/laravel-model-media-backup",
+    "description": "Take media backup for model in Laravel.",
+    "license": "license",
+    "authors": [
+        {
+            "name": "BinBytes",
+            "email": "info@binbytes.com",
+            "homepage": "https://binbytes.com"
+        }
+    ],
+    "homepage": "https://github.com/binbytes/laravel-model-media-backup",
+    "keywords": ["Laravel", "Model Media Backup", "Backup"],
+    "require": {
+        "illuminate/support": "~5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.0",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BinBytes\\ModelMediaBackup\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BinBytes\\ModelMediaBackup\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BinBytes\\ModelMediaBackup\\ModelBackupServiceProvider"
+            ],
+            "aliases": {
+                "ModelMediaBackup": "BinBytes\\ModelMediaBackup\\Facades\\ModelMediaBackup"
+            }
+        }
+    }
+}
