@@ -2,9 +2,6 @@
 
 namespace BinBytes\ModelMediaBackup\Events;
 
-use Exception;
-use Spatie\Backup\BackupDestination\BackupDestination;
-
 class MediaBackupSuccessful
 {
     /**
