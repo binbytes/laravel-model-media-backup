@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BinBytes\\ModelMediaBackup\\ModelBackupServiceProvider"
+                "BinBytes\\ModelMediaBackup\\ModelMediaBackupServiceProvider"
             ]
         }
     }
