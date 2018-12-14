@@ -132,6 +132,7 @@ If you discover any security related issues, please email author email instead o
 ## Credits
 
 - [Nikunj Kanetiya](https://github.com/nikkanetiya)
+- [Malde Chavda](https://github.com/maldechavda)
 
 ## License
 
