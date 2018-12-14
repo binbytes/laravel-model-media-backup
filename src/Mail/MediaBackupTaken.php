@@ -13,6 +13,7 @@ class MediaBackupTaken extends Mailable implements ShouldQueue
 
     /**
      * Backup Taken of these records
+     *
      * @var array
      */
     public $records;
@@ -20,7 +21,7 @@ class MediaBackupTaken extends Mailable implements ShouldQueue
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param array $records
      */
     public function __construct(array $records)
     {
