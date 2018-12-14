@@ -34,10 +34,7 @@
         "laravel": {
             "providers": [
                 "BinBytes\\ModelMediaBackup\\ModelBackupServiceProvider"
-            ],
-            "aliases": {
-                "ModelMediaBackup": "BinBytes\\ModelMediaBackup\\Facades\\ModelMediaBackup"
-            }
+            ]
         }
     }
 }
