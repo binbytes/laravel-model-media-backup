@@ -1,7 +1,8 @@
 # Laravel Model Media Backup
 Take newly added media backup associated with any model rather than full backup on daily basis.
 
-It will be useful in the case where you have lot of media but rather than taking whole media file each day it will be better to just take newly added media.
+It package will be useful in the case where you have lot of media but rather than taking whole media directories each day it might be better to just take newly added media.
+
 
 BinBytes is an web & mobile application development agency in Rajkot, India. You'll find an overview of all our services [on our website](https://binbytes.com).
 
@@ -40,12 +41,7 @@ return [
          * Number of records to be chunk in backup process
          */
         'ChunkSize' => 100,
-    
-        /*
-         * Turn it to true if you want notification after backup is proccessed
-         */
-        'EnableNotification' => false,
-    
+
         /*
          * Notification configuration
          */
