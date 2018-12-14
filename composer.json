@@ -4,9 +4,10 @@
     "license": "license",
     "authors": [
         {
-            "name": "BinBytes",
-            "email": "info@binbytes.com",
-            "homepage": "https://binbytes.com"
+            "name": "Nikunj Kanetiya",
+            "email": "kanetiya@gmail.com",
+            "homepage": "https://binbytes.com",
+            "role": "Developer"
         }
     ],
     "homepage": "https://github.com/binbytes/laravel-model-media-backup",
