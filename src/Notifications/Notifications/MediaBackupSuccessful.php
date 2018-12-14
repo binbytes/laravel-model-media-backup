@@ -19,18 +19,10 @@ class MediaBackupSuccessful extends BaseNotification
     public function toMail()
     {
         return (new MailMessage)
-            ->subject(trans('backup::notifications.backup_successful_subject', ['application_name' => $this->applicationName()]))
+            ->subject('Model media backup alert! - ' . config('app.name'))
             ->markdown('modelmediabackup::mail.backup.processed', [
                 'records' => $this->event->recordsBackup
             ]);
-    }
-
-    /**
-     * @return \Illuminate\Config\Repository|mixed|string
-     */
-    public function applicationName()
-    {
-        return config('app.name') ?? config('app.url') ?? 'Laravel application';
     }
 
     /**
