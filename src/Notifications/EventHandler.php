@@ -42,7 +42,7 @@ class EventHandler
      */
     protected function determineNotifiable()
     {
-        $notifiableClass = $this->config->get('modelmediabackup.Notification.MailTo');
+        $notifiableClass = $this->config->get('modelmediabackup.Notification.notifiable');
 
         return app($notifiableClass);
     }
