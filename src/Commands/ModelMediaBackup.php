@@ -4,6 +4,8 @@ namespace BinBytes\ModelMediaBackup\Commands;
 
 use BinBytes\ModelMediaBackup\Mail\MediaBackupTaken;
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class ModelMediaBackup extends Command
 {
@@ -22,29 +24,17 @@ class ModelMediaBackup extends Command
     protected $description = 'Take backup of resource by model';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed
      */
     public function handle()
     {
-        $backupDisk = config('modelmediabackup.BACKUP_DISK');
-
-        if(!$backupDisk) {
+        if(! $backupDisk = config('modelmediabackup.BACKUP_DISK')) {
             return;
         }
 
-        $storage = \Storage::disk($backupDisk);
+        $storage = Storage::disk($backupDisk);
         $chunkSize = config('modelmediabackup.ChunkSize');
 
         foreach ($models = config('modelmediabackup.Models') as $model) {
@@ -58,7 +48,7 @@ class ModelMediaBackup extends Command
                 ->chunk($chunkSize, function ($records) use($storage, &$recordsBackup) {
                     $records->each(function ($record) use($storage, &$recordsBackup) {
                         if ($backupFiles = $record->backupFiles()) {
-                            foreach (is_array($backupFiles) ? $backupFiles : [$backupFiles] as $backupFile) {
+                            foreach (Arr::wrap($backupFiles) as $backupFile) {
                                 if($this->takeBackup($storage, $backupFile)) {
                                     $recordsBackup[] = $record->getKey();
                                 }
@@ -76,15 +66,15 @@ class ModelMediaBackup extends Command
     /**
      * Copy file to destination/backup disk
      *
-     * @param $storage
-     * @param $file
+     * @param \Illuminate\Contracts\Filesystem\Filesystem $storage
+     * @param string $file
      *
      * @return bool
      */
     protected function takeBackup($storage, $file)
     {
-        if(\Storage::exists($file) && $storage->exists($file) == false) {
-            $stream = \Storage::getDriver()->readStream($file);
+        if(Storage::exists($file) && $storage->exists($file) == false) {
+            $stream = Storage::getDriver()->readStream($file);
 
             return $storage->put($file, $stream);
         }
@@ -95,7 +85,7 @@ class ModelMediaBackup extends Command
     /**
      * Send notifications after backup
      *
-     * @param $recordsBackup
+     * @param array $recordsBackup
      */
     protected function sendNotifications(array $recordsBackup)
     {
@@ -110,6 +100,9 @@ class ModelMediaBackup extends Command
 
     /**
      * Send notification mail
+     *
+     * @param string $mailTo
+     * @param array $recordsBackup
      */
     protected function sendNotificationMail($mailTo, array $recordsBackup)
     {
