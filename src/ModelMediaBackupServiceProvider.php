@@ -3,6 +3,7 @@
 namespace BinBytes\ModelMediaBackup;
 
 use BinBytes\ModelMediaBackup\Commands\ModelMediaBackup;
+use BinBytes\ModelMediaBackup\Notifications\EventHandler;
 use Illuminate\Support\ServiceProvider;
 
 class ModelMediaBackupServiceProvider extends ServiceProvider
@@ -29,6 +30,8 @@ class ModelMediaBackupServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app['events']->subscribe(EventHandler::class);
+
         $this->mergeConfigFrom(__DIR__.'/../config/modelmediabackup.php', 'modelmediabackup');
     }
 

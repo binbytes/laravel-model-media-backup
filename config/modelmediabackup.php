@@ -31,6 +31,10 @@ return [
         /*
          * Email address where you want to receive email alert
          */
-        'MailTo' => null
+        'MailTo' => null,
+
+        'Notifications' => [
+            \BinBytes\ModelMediaBackup\Notifications\Notifications\MediaBackupSuccessful::class
+        ]
     ]
 ];
