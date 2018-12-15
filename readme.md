@@ -1,7 +1,12 @@
 # Laravel Model Media Backup
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Build Status][ico-travis]][link-travis]
+[![StyleCI][ico-styleci]][link-styleci]
+[![Total Downloads][ico-downloads]][link-downloads]
+
 Take newly added media backup associated with any model rather than full backup on daily basis.
 
-It package will be useful in the case where you have lot of media but rather than taking whole media directories each day it might be better to just take newly added media.
+This package will be useful in the case where you have lot of media/attachment with any models but rather than taking all media directories each day it might be better to just take newly added media.
 
 
 BinBytes is an web & mobile application development agency in Rajkot, India. You'll find an overview of all our services [on our website](https://binbytes.com).
@@ -26,43 +31,43 @@ This will publish a file `modelmediabackup.php` in your config directory with th
 ```php
 return [
     /*
-     * Models from which you want to take media for backup
-     */
-    'models' => [
-        // Example 'App\User'
-    ],
-
-    /*
-     * Backup FILESYSTEM_DRIVER name on which you want to take backup
-     */
-    'backup_disk' => null, // FILESYSTEM_DRIVER
-
-    /*
-     * Number of records to be chunk in backup process
-     */
-    'chunk_size' => 100,
-
-    /*
-     * Notification configuration
-     */
-    'notification' => [
-
-        /*
-         * Email address where you want to receive email alert
+         * Models from which you want to take media for backup
          */
-        'mail_to' => null,
-
-        /*
-         * Here you can specify the notifiable to which the notifications should be sent. The default
-         *
-         * notifiable will use the variables specified in this config file.
-         */
-        'notifiable' => \BinBytes\ModelMediaBackup\Notifications\Notifiable::class,
-
-        'notifications' => [
-            \BinBytes\ModelMediaBackup\Notifications\Notifications\MediaBackupSuccessful::class,
+        'Models' => [
+            // Example 'App\User'
         ],
-    ],
+    
+        /*
+         * Backup FILESYSTEM_DRIVER name on which you want to take backup
+         */
+        'BACKUP_DISK' => null, // FILESYSTEM_DRIVER
+    
+        /*
+         * Number of records to be chunk in backup process
+         */
+        'ChunkSize' => 100,
+
+        /*
+         * Notification configuration
+         */
+        'Notification' => [
+    
+            /*
+             * Email address where you want to receive email alert
+             */
+            'MailTo' => null,
+    
+            /*
+             * Here you can specify the notifiable to which the notifications should be sent. The default
+             *
+             * notifiable will use the variables specified in this config file.
+             */
+            'notifiable' => \BinBytes\ModelMediaBackup\Notifications\Notifiable::class,
+    
+            'Notifications' => [
+                \BinBytes\ModelMediaBackup\Notifications\Notifications\MediaBackupSuccessful::class,
+            ]
+        ]
 ];
 ```
 ## Usage
@@ -134,4 +139,12 @@ If you discover any security related issues, please email author email instead o
 
 MIT License. Please see the [license file](LICENSE.md) for more information.
 
-[link-author]: https://github.com/binbytes
+[ico-version]: https://img.shields.io/packagist/v/binbytes/laravel-model-media-backup.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/binbytes/laravel-model-media-backup.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/binbytes/laravel-model-media-backup/master.svg?style=flat-square
+[ico-styleci]: https://styleci.io/repos/161747494/shield
+
+[link-packagist]: https://packagist.org/packages/binbytes/laravel-model-media-backup
+[link-downloads]: https://packagist.org/packages/binbytes/laravel-model-media-backup
+[link-travis]: https://travis-ci.org/binbytes/laravel-model-media-backup
+[link-styleci]: https://styleci.io/repos/161747494
