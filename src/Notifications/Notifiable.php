@@ -13,6 +13,6 @@ class Notifiable
      */
     public function routeNotificationForMail()
     {
-        return config('modelmediabackup.Notification.MailTo');
+        return config('modelmediabackup.notification.mail_to');
     }
 }
