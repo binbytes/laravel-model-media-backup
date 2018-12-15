@@ -4,29 +4,29 @@ return [
     /*
      * Models from which you want to take media for backup
      */
-    'Models' => [
+    'models' => [
         // Example 'App\User'
     ],
 
     /*
      * Backup FILESYSTEM_DRIVER name on which you want to take backup
      */
-    'BACKUP_DISK' => null, // FILESYSTEM_DRIVER
+    'backup_disk' => null, // FILESYSTEM_DRIVER
 
     /*
      * Number of records to be chunk in backup process
      */
-    'ChunkSize' => 100,
+    'chunk_size' => 100,
 
     /*
      * Notification configuration
      */
-    'Notification' => [
+    'notification' => [
 
         /*
          * Email address where you want to receive email alert
          */
-        'MailTo' => null,
+        'mail_to' => null,
 
         /*
          * Here you can specify the notifiable to which the notifications should be sent. The default
@@ -35,7 +35,7 @@ return [
          */
         'notifiable' => \BinBytes\ModelMediaBackup\Notifications\Notifiable::class,
 
-        'Notifications' => [
+        'notifications' => [
             \BinBytes\ModelMediaBackup\Notifications\Notifications\MediaBackupSuccessful::class,
         ],
     ],

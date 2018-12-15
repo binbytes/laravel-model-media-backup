@@ -30,14 +30,14 @@ class ModelMediaBackup extends Command
      */
     public function handle()
     {
-        if (! $backupDisk = config('modelmediabackup.BACKUP_DISK')) {
+        if (! $backupDisk = config('modelmediabackup.backup_disk')) {
             return;
         }
 
         $storage = Storage::disk($backupDisk);
-        $chunkSize = config('modelmediabackup.ChunkSize');
+        $chunkSize = config('modelmediabackup.chunk_size');
 
-        foreach ($models = config('modelmediabackup.Models') as $model) {
+        foreach ($models = config('modelmediabackup.models') as $model) {
             if (method_exists($model, 'backupFiles') === false) {
                 continue;
             }

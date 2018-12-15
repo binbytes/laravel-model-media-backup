@@ -42,7 +42,7 @@ class EventHandler
      */
     protected function determineNotifiable()
     {
-        $notifiableClass = $this->config->get('modelmediabackup.Notification.notifiable');
+        $notifiableClass = $this->config->get('modelmediabackup.notification.notifiable');
 
         return app($notifiableClass);
     }
@@ -56,7 +56,7 @@ class EventHandler
     protected function determineNotification($event)
     {
         $eventName = class_basename($event);
-        $notificationClass = collect($this->config->get('modelmediabackup.Notification.Notifications'))
+        $notificationClass = collect($this->config->get('modelmediabackup.notification.notifications'))
             ->first(function ($notificationClass) use ($eventName) {
                 return class_basename($notificationClass) === $eventName;
             });
