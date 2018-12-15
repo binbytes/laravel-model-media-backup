@@ -2,8 +2,8 @@
 
 namespace BinBytes\ModelMediaBackup\Notifications\Notifications;
 
-use BinBytes\ModelMediaBackup\Notifications\BaseNotification;
 use Illuminate\Notifications\Messages\MailMessage;
+use BinBytes\ModelMediaBackup\Notifications\BaseNotification;
 use BinBytes\ModelMediaBackup\Events\MediaBackupSuccessful as MediaBackupSuccessfulEvent;
 
 class MediaBackupSuccessful extends BaseNotification
@@ -19,9 +19,9 @@ class MediaBackupSuccessful extends BaseNotification
     public function toMail()
     {
         return (new MailMessage)
-            ->subject('Model media backup alert! - ' . config('app.name'))
+            ->subject('Model media backup alert! - '.config('app.name'))
             ->markdown('modelmediabackup::mail.backup.processed', [
-                'records' => $this->event->recordsBackup
+                'records' => $this->event->recordsBackup,
             ]);
     }
 

@@ -37,6 +37,6 @@ return [
 
         'Notifications' => [
             \BinBytes\ModelMediaBackup\Notifications\Notifications\MediaBackupSuccessful::class,
-        ]
-    ]
+        ],
+    ],
 ];
