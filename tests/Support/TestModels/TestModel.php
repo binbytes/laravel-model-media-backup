@@ -2,8 +2,8 @@
 
 namespace BinBytes\ModelMediaBackup\Tests\Support\TestModels;
 
-use BinBytes\ModelMediaBackup\Traits\HasBackupRecords;
 use Illuminate\Database\Eloquent\Model;
+use BinBytes\ModelMediaBackup\Traits\HasBackupRecords;
 
 class TestModel extends Model
 {
@@ -25,7 +25,7 @@ class TestModel extends Model
     public $timestamps = false;
 
     /**
-     * Media file associated with record
+     * Media file associated with record.
      *
      * @return string|array
      */

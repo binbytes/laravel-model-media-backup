@@ -2,9 +2,9 @@
 
 namespace BinBytes\ModelMediaBackup\Tests;
 
-use BinBytes\ModelMediaBackup\ModelMediaBackupServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as Orchestra;
+use BinBytes\ModelMediaBackup\ModelMediaBackupServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -68,8 +68,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            ModelMediaBackupServiceProvider::class
+            ModelMediaBackupServiceProvider::class,
         ];
     }
-
 }
