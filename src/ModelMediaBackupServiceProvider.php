@@ -2,9 +2,9 @@
 
 namespace BinBytes\ModelMediaBackup;
 
+use Illuminate\Support\ServiceProvider;
 use BinBytes\ModelMediaBackup\Commands\ModelMediaBackup;
 use BinBytes\ModelMediaBackup\Notifications\EventHandler;
-use Illuminate\Support\ServiceProvider;
 
 class ModelMediaBackupServiceProvider extends ServiceProvider
 {
@@ -44,7 +44,7 @@ class ModelMediaBackupServiceProvider extends ServiceProvider
     {
         return ['modelmediabackup'];
     }
-    
+
     /**
      * Console-specific booting.
      *
@@ -64,7 +64,7 @@ class ModelMediaBackupServiceProvider extends ServiceProvider
 
         // Registering package commands.
         $this->commands([
-            ModelMediaBackup::class
+            ModelMediaBackup::class,
         ]);
     }
 }

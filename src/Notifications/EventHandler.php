@@ -2,9 +2,9 @@
 
 namespace BinBytes\ModelMediaBackup\Notifications;
 
-use BinBytes\ModelMediaBackup\Events\MediaBackupSuccessful;
-use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Events\Dispatcher;
+use BinBytes\ModelMediaBackup\Events\MediaBackupSuccessful;
 
 class EventHandler
 {
@@ -77,5 +77,4 @@ class EventHandler
             MediaBackupSuccessful::class,
         ];
     }
-
 }
