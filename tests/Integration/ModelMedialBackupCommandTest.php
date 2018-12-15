@@ -2,13 +2,13 @@
 
 namespace BinBytes\ModelMediaBackup\Tests\Integration;
 
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
+use BinBytes\ModelMediaBackup\Tests\TestCase;
 use BinBytes\ModelMediaBackup\Events\MediaBackupSuccessful;
 use BinBytes\ModelMediaBackup\Tests\Support\TestModels\TestModel;
 use BinBytes\ModelMediaBackup\Tests\Support\TestModels\TestNewModel;
-use BinBytes\ModelMediaBackup\Tests\TestCase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Artisan;
 
 class ModelMedialBackupCommandTest extends TestCase
 {
@@ -88,7 +88,7 @@ class ModelMedialBackupCommandTest extends TestCase
             'avatar' => Storage::disk('local')->putFile(
                 'new_model_avatars',
                 UploadedFile::fake()->image('new_avatar.jpg')
-            )
+            ),
         ]);
 
         Artisan::call('model:media:backup');
